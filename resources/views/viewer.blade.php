@@ -199,27 +199,35 @@
                     Aperçu du modèle 3D
                 </div>
                 <div class="viewer-container">
-                    <model-viewer
-                        src="{{ $modeleUrl }}"
-                        alt="{{ $modeleNom }}"
-                        ar
-                        ar-modes="webxr quick-look"
-                        camera-controls
-                        touch-action="pan-y"
-                        auto-rotate
-                        shadow-intensity="1"
-                        loading="eager"
-                        poster=""
-                    ></model-viewer>
+ <model-viewer
+    src="https://raw.githubusercontent.com/salmabelgadi-27/OneTagProject/master/public/modeles-gh/{{ $modeleNom }}"
+    alt="{{ $modeleNom }}"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    touch-action="pan-y"
+    auto-rotate
+    shadow-intensity="1"
+    loading="eager"
+></model-viewer>
                 </div>
                 <div class="model-name">
                     📄 {{ $modeleNom }}
                 </div>
-                <div style="margin-top:15px;">
+<div style="margin-top:15px;">
     <button onclick="document.querySelector('model-viewer').activateAR()" style="width:100%;padding:16px;border:none;border-radius:12px;background:linear-gradient(135deg,#C9793F,#C89B3C);color:#FBF3E7;font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(201,121,63,0.35);">
         📱 Voir en Réalité Augmentée (AR)
     </button>
 </div>
+<script>
+    document.getElementById('arLink').addEventListener('click', function(e) {
+        const mv = document.querySelector('model-viewer');
+        if (mv && mv.canActivateAR) {
+            e.preventDefault();
+            mv.activateAR();
+        }
+    });
+</script>
                 <div class="ar-badge">
                     ✅ AR disponible — appuyez sur le bouton AR dans le viewer (sur téléphone)
                 </div>
